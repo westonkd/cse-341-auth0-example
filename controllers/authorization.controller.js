@@ -9,7 +9,7 @@ const AuthorizationController = {
       appConfig.clientID
     }&redirect_uri=${encodeURIComponent(
       appConfig.redirectUrl
-    )}&scope=profile%20email`;
+    )}&scope=openid%20profile%20email`;
 
     res.redirect(authorizationURL);
   },
@@ -27,7 +27,7 @@ const AuthorizationController = {
           client_id: appConfig.clientID,
           client_secret: appConfig.clientSecret,
           redirect_uri: appConfig.redirectUrl,
-          scope: "profile email",
+          scope: "openid profile email",
           code: req.query.code,
         }),
       }

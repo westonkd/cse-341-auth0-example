@@ -1,6 +1,6 @@
 const ScripturesController = {
   index: (req, res) => {
-    res.json(req.user);
+    res.json(req.user.favoriteScriptures);
   },
 };
 

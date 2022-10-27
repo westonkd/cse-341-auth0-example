@@ -6,6 +6,7 @@ const database = {
     try {
       await mongoose.connect(dbConfig.url);
     } catch (e) {
+      console.error(e);
       return false;
     }
 

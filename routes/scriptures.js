@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const ScripturesController = require("../controllers/scriptures.controller");
-const loadUser = require("../middleeware/loadUser");
+const loadUser = require("../middleware/loadUser");
 
 const router = Router();
 

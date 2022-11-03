@@ -1,6 +1,6 @@
 const express = require("express");
 
-const openCors = require("../middleeware/openCors");
+const openCors = require("../middleware/openCors");
 const cors = require("cors");
 
 const scriptureRoutes = require("./scriptures");

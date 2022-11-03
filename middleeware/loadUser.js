@@ -2,30 +2,34 @@ const appConfig = require("../config/app");
 const User = require("../models/user");
 
 const loadUser = async (req, res, next) => {
-  // If there is no Authorization header with a token, we can't
-  // load a user
-  if (!req.headers.authorization) next();
+  try {
+    // If there is no Authorization header with a token, we can't
+    // load a user
+    if (!req.headers.authorization) next();
 
-  // Parse the token out of the authorization header
-  const token = parseToken(req);
+    // Parse the token out of the authorization header
+    const token = parseToken(req);
 
-  // Fetch the user's info from auth0 by making a GET
-  // request to auth0 with the access token in
-  // the authorization header
-  const authZeroUser = await fetchAuthZeroUser(token);
+    // Fetch the user's info from auth0 by making a GET
+    // request to auth0 with the access token in
+    // the authorization header
+    const authZeroUser = await fetchAuthZeroUser(token);
 
-  // Lookup the user in _our_ database based on the
-  // user info we got back from Auth0.
-  //
-  // If no User exists in our database yet, create
-  // one and return it!
-  const user = await findOrCreateUser(authZeroUser);
+    // Lookup the user in _our_ database based on the
+    // user info we got back from Auth0.
+    //
+    // If no User exists in our database yet, create
+    // one and return it!
+    const user = await findOrCreateUser(authZeroUser);
 
-  // Now we have a user. Set it on the request so we
-  // can access it in controllers \o/
-  req.user = user;
+    // Now we have a user. Set it on the request so we
+    // can access it in controllers \o/
+    req.user = user;
 
-  next();
+    next();
+  } catch (_error) {
+    next();
+  }
 };
 
 const findOrCreateUser = async (authZeroUserJson) => {

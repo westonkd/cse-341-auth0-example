@@ -11,6 +11,7 @@
   "author": "Weston Dransfield",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.28.0",
     "nodemon": "^2.0.20",
     "swagger-autogen": "^2.22.0"
   },

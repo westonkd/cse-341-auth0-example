@@ -21,6 +21,13 @@
     }
   },
   "paths": {
+    "{cors({origin*}": {
+      "options": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/authorization/login": {
       "get": {
         "description": "",
@@ -52,6 +59,21 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }

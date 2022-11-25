@@ -7,5 +7,6 @@ const router = Router();
 router.use([loadUser]);
 
 router.get("/", ScripturesController.index);
+router.post("/", ScripturesController.create);
 
 module.exports = router;
